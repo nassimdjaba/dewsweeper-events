@@ -1,0 +1,12 @@
+<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content=noindex><title>Preverjanje ključa</title>
+<body style="font:16px/1.5 system-ui;padding:20px;max-width:560px"><h2>Preverjanje ključa</h2><ol id=o></ol><p><a href="./">Nazaj na dogodke</a></p><script>
+const o=document.getElementById("o"),say=(ok,t)=>{const l=document.createElement("li");l.textContent=(ok?"✅ ":"❌ ")+t;o.append(l)};
+(async()=>{let t="";try{t=localStorage.getItem("dwTok")||""}catch(e){}
+if(!t){say(0,"Ključ ni shranjen v tem brskalniku.");return}
+say(t.startsWith("github_pat_"),"Začetek: "+(t.startsWith("github_pat_")?"github_pat_ (pravilno)":"NI github_pat_ — kopiran je napačen ali nepopoln ključ"));
+say(t.length>=80,"Dolžina: "+t.length+" znakov (pravilen ključ ima okoli 93)");
+say(!/\s/.test(t),/\s/.test(t)?"V ključu je presledek ali nova vrstica":"Brez presledkov");
+const h={Authorization:"Bearer "+t,Accept:"application/vnd.github+json"};
+let r=await fetch("https://api.github.com/user",{headers:h});say(r.ok,"GitHub sprejme ključ: "+(r.ok?"da":"ne ("+r.status+")"));
+r=await fetch("https://api.github.com/repos/nassimdjaba/dewsweeper-events/contents/events.json",{headers:h});say(r.ok,"Dostop do repozitorija dewsweeper-events: "+(r.ok?"da":"ne ("+r.status+")"));
+})().catch(e=>say(0,"Napaka: "+e.message))</script>
