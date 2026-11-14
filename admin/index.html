@@ -1,0 +1,4 @@
+<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content=noindex><title>Dewsweeper dogodki</title><body style="font-family:system-ui;padding:20px">Nalagam …<script>
+(async()=>{const t=(await Promise.all(["p1.txt","p2.txt"].map(f=>fetch(f+"?t="+Date.now()).then(r=>r.text())))).join("").replace(/\s/g,"");
+const b=Uint8Array.from(atob(t),c=>c.charCodeAt(0));const h=await new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
+document.open();document.write(h);document.close()})().catch(e=>document.body.textContent="Stran se ni naložila: "+e.message)</script>
