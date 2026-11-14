@@ -29,7 +29,7 @@
       "id": "martinovo-2026",
       "kind": "challenge",
       "starts": "2026-11-07T00:00:00+01:00",
-      "ends": "2026-11-15T23:59:00+01:00",
+      "ends": "2026-11-16T23:59:59+01:00",
       "title": {
         "sl": "Martinov teden",
         "en": "St. Martin's week"
